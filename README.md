@@ -39,7 +39,7 @@ python -m venv .venv-cellpose
 .venv-cellpose\Scripts\activate
 pip install -r ..\requirements.txt --extra-index-url https://download.pytorch.org/whl/cu128
 ```
-Put the fine-tuned weights `cpsam_luikart_v2` into `suite/models/` (see [`suite/models/README.md`](suite/models/README.md));
+Download the fine-tuned weights `cpsam_luikart_v2` (1.2 GB) from the [v3.0 release](https://github.com/LuikartLab/soma_detector_suite/releases/tag/v3.0) and put the file into `suite/models/` (see [`suite/models/README.md`](suite/models/README.md));
 Cellpose downloads the base weights on first use. Then double-click `suite\Soma_Detector_3.0.bat` — it starts the
 detector, Group Analysis and the Cre classifier with `python312\` or `.venv-cellpose\` found next to itself, else
 the `pythonw` on PATH — or run `python suite\soma_area_and_intensity_gui_3.0.py` with the environment active.
