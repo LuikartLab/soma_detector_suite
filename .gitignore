@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.venv*/
+python312/
+*.log
+~$*
+# large model weights (see suite/models/README.md)
+suite/models/cpsam_luikart_v2
+suite/models/cellpose/
+# image data and curated ROI archives are not part of the repository
+*.lsm
+*.czi
+*_ROIs.npz
+*_ROI.zip

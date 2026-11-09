@@ -1,0 +1,18 @@
+# Soma Detector Suite v3.0 — install into a fresh Python 3.12 environment:
+#   pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu128
+# (the CUDA 12.8 PyTorch build; use the matching index for your driver/CUDA, or the CPU build for CPU-only use)
+torch==2.11.0+cu128
+torchvision==0.26.0+cu128
+cellpose==4.2.1.1
+numpy==2.5.2
+scipy==1.18.1
+scikit-image==0.26.0
+scikit-learn==1.9.1
+pandas==3.0.5
+matplotlib==3.11.2
+openpyxl==3.1.5
+tifffile==2026.9.9
+czifile==2026.8.16
+imagecodecs==2026.8.16
+roifile==2026.7.30
+joblib==1.6.0

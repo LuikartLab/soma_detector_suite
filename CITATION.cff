@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper below."
+title: "Soma Detector Suite"
+version: "3.0"
+date-released: "2026-10-05"
+authors:
+  - family-names: Luikart
+    given-names: Bryan W.
+    affiliation: "University of Alabama at Birmingham"
+  - family-names: Prina
+    given-names: Mackenzi L.
+    affiliation: "University of Alabama at Birmingham"
+license: MIT
+repository-code: "https://github.com/LuikartLab/soma_detector_suite"
+preferred-citation:
+  type: article
+  title: "Automated Three-Dimensional Soma Detection and Fluorescence Quantification in Multi-Channel Confocal Microscopy via Human–AI Collaborative Development: a Deep-Learning Engine Validated Against a Published Study"
+  authors:
+    - family-names: Luikart
+      given-names: Bryan W.
+  year: 2026
+  journal: "[journal]"

@@ -1,0 +1,60 @@
+SOMA DETECTOR SUITE v3.0 (Cellpose-SAM engine) - portable install
+=================================================================
+Built 2026-09-23 from C:\Python\SOMA Detector on the Luikart lab analysis PC.
+
+WHAT YOU NEED ON THE NEW PC
+  * Windows 10/11, 64-bit.
+  * An NVIDIA GeForce RTX card (tested: RTX 5060 Ti 8 GB, RTX 5080 16 GB; the
+    5070 Ti is the same generation) with a CURRENT GeForce driver installed
+    (any driver from 2025 or later; CUDA 12.8 needs driver >= 570).
+    Without an NVIDIA GPU the program still runs, but detection is ~50x slower.
+  * ~15 GB free disk space.  No Python install and no internet are required:
+    the bundle carries its own Python 3.12 with every package, and both
+    Cellpose models.
+
+INSTALL (5 minutes)
+  1. Copy SomaDetector_3.0_portable.zip from the external drive to the new PC
+     and unzip it, e.g. to  C:\Python\SOMA Detector\
+     (right-click > Extract All...).  Unzipping straight from the USB drive
+     is slow; copy the zip first.
+  2. Open the unzipped folder and double-click  Soma_Detector_3.0.bat
+     It starts the Soma Detector and Group Analysis.  Cre_Classifier.bat
+     starts the Cre classifier.
+  3. First start takes ~30 s (loading the 1.2 GB model).  The window title
+     shows the active model:  "Soma Detector v3.0 - model: cpsam_luikart_v2".
+  4. Optional: right-click Soma_Detector_3.0.bat > Send to > Desktop
+     (create shortcut).
+
+WHAT IS IN THE FOLDER
+  soma_area_and_intensity_gui_3.0.py   Soma Detector (Cellpose-SAM engine)
+  cellpose_engine.py                   detection engine (model selection is
+                                       the CUSTOM_MODEL line near the top)
+  group_analysis_gui.py                Group Analysis
+  cre_classifier_gui.py                Cre classifier
+  cell_jump_ipc.py, convert_roi_zip_to_npz.py   helpers
+  models\cpsam_luikart_v2              fine-tuned Cellpose-SAM weights (default)
+  models\cellpose\cpsam_v2             base Cellpose-SAM weights (fallback)
+  models\soma_pick_model.joblib        human-pick ranking model
+  python312\                           private Python 3.12.7 + PyTorch 2.11 (CUDA 12.8),
+                                       Cellpose 4.2.1, numpy, scipy, scikit-image,
+                                       pandas, matplotlib, openpyxl, czifile, tifffile ...
+  wheelhouse\  (on the USB drive only) the same packages as wheel files - plan B:
+               if python312\ will not start, install python.org Python 3.12 and run
+                 python -m pip install --no-index --find-links wheelhouse -r requirements.txt
+
+THE FINE-TUNED MODEL
+  models\cpsam_luikart_v2 is Cellpose-SAM fine-tuned (2026-09-23) on 349 crops of
+  hand-circled somas from the Fig 2B stacks.  On 6 held-out stacks it matches the
+  human outlines better than the base model (area CCC 0.90 vs 0.71; 91 % vs 72 %
+  of cells within 25 % of the human's area; picked plane within 1 slice 93 % vs
+  83 %; recall unchanged).  With it the "Outline breadth" default is 0 um.
+  To fall back to the base model, set  CUSTOM_MODEL = None  in cellpose_engine.py
+  (the breadth default then returns to -0.5 um).  Every NPZ records which model
+  produced it (meta -> engine_params -> model).
+
+TROUBLESHOOTING
+  * "Cellpose unavailable" message: the .bat could not find python312\pythonw.exe
+    - make sure the folder was unzipped completely (python312\ is ~5 GB).
+  * Detection says "CPU only - slow": update the NVIDIA driver, then reboot.
+  * Nothing happens on double-click: run the .bat from a Command Prompt to see
+    the error (cd into the folder, then type  Soma_Detector_3.0.bat).
